@@ -1,11 +1,13 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <queue>
+#include <vector>
 using namespace std;
 
 struct ListNode {
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
+    explicit ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
@@ -14,22 +16,21 @@ struct TreeNode {
     TreeNode *left;
     TreeNode *right;
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    explicit TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-string s2s (string input) {
-    int n = input.size();
-    input = input.substr(1, n - 2);
-    return input;
+string s2s (const string& input) {
+    int n = (int)input.size();
+    return input.substr(1, n - 2);
 }
 
 
-vector<string> split(string s, string delimiter) {
+vector<string> split(string s, const string& delimiter) {
     int pos;
     string token;
     vector<string> ans;
-    while ((pos = s.find(delimiter)) != string::npos) {
+    while ((pos = (int)s.find(delimiter)) != string::npos) {
         if (pos == 0) {
             s.erase(0, pos + delimiter.length());
             continue;
@@ -56,11 +57,11 @@ vector<int> s2vi(string input) {
     return arr;
 }
 
-int s2i(string input) {
+int s2i(const string& input) {
     return stoi(input);
 }
 
-ListNode* s2l (string input) {
+ListNode* s2l (const string& input) {
     vector<int> tmp = s2vi(input);
     ListNode* dummy = new ListNode();
     ListNode* cur = dummy;
@@ -85,13 +86,18 @@ TreeNode* buildTree(TreeNode* root, vector<int>&tmp, int pos) {
     return root;
 }
 
-TreeNode* s2t(string input) {
+TreeNode* s2t(const string& input) {
     vector<int> tmp = s2vi(input);
-    TreeNode* root;
+    TreeNode* root = nullptr;
     return buildTree(root, tmp, 0);
 }
 
-void printAns(vector<int> ans){
+template <typename T>
+void printAns(T t) {
+    cout << t << endl;
+}
+
+void printAns(const vector<int>& ans){
     for (int i: ans) {
         cout << i << " ";
     }
@@ -105,7 +111,7 @@ void printAns(ListNode* head) {
     }
 }
 
-void printTreeVertically(string prefix, TreeNode* root, bool isLeft) {
+void printTreeVertically(const string& prefix, TreeNode* root, bool isLeft) {
     if (root != nullptr) {
         cout << prefix;
         cout << (isLeft ? "\\--" : "|--");
@@ -117,7 +123,7 @@ void printTreeVertically(string prefix, TreeNode* root, bool isLeft) {
 
 void printTreeHorizontally (TreeNode* root) {
     // TODO: unfinished
-    vector<vector<int>> tmp;
+    vector<vector<int> > tmp;
     queue<TreeNode*> q;
     q.push(root);
     int level = 0;
@@ -157,10 +163,5 @@ void printTreeHorizontally (TreeNode* root) {
 void printAns(TreeNode* root) {
 //    printTreeHorizontally(root);
     printTreeVertically("", root,true);
-}
-
-template <typename T>
-void printAns(T t) {
-    cout << t << endl;
 }
 
