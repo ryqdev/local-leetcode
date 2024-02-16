@@ -8,7 +8,7 @@ struct ListNode {
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
     explicit ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    ListNode(int x, ListNode *node) : val(x), next(node) {}
 };
 
 struct TreeNode {
@@ -21,10 +21,8 @@ struct TreeNode {
 };
 
 string s2s (const string& input) {
-    int n = (int)input.size();
-    return input.substr(1, n - 2);
+    return input.substr(1, (int)input.size() - 2);
 }
-
 
 vector<string> split(string s, const string& delimiter) {
     int pos;
