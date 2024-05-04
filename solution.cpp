@@ -1,4 +1,6 @@
 #include "util.cpp"
+using namespace std;
+
 
 class Solution {
 public:

@@ -1,6 +1,5 @@
 #include<iostream>
 #include "solution.cpp"
-using namespace std;
 
 int main(){
 #ifndef ONLINE_JUDEG
@@ -8,8 +7,8 @@ int main(){
     freopen("./output.txt", "w", stdout);
 #endif
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
 
     string input;
     getline(cin, input);
