@@ -13,10 +13,10 @@ int main(){
 
     string input;
     getline(cin, input);
-    TreeNode* root = s2t(input);
+    vector<int> arr = s2vi(input);
 
     Solution s;
-    auto ans = s.invertTree(root);
+    auto ans = s.largestRectangleArea(arr);
 
     printAns(ans);
     return 0;
